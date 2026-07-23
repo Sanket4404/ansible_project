@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SDS</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    height:100vh;
+    overflow:hidden;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-family:Inter,"Segoe UI",sans-serif;
+
+    /* Premium Dark Background */
+    background:
+    radial-gradient(circle at 20% 20%, rgba(255,75,75,.12), transparent 35%),
+    radial-gradient(circle at 80% 70%, rgba(255,120,120,.08), transparent 40%),
+    linear-gradient(135deg,#07070A,#111114,#1A1A1F);
+
+    animation:bgMove 10s ease infinite;
+}
+
+/* Animated glow */
+body::before{
+    content:"";
+    position:absolute;
+    width:700px;
+    height:700px;
+    background:radial-gradient(circle,#DC262640 0%,transparent 70%);
+    filter:blur(90px);
+    animation:float 10s ease-in-out infinite alternate;
+}
+
+/* Glass Card */
+
+.card{
+    position:relative;
+    padding:65px 85px;
+    border-radius:28px;
+
+    background:rgba(255,255,255,.05);
+    backdrop-filter:blur(18px);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    box-shadow:
+    0 20px 70px rgba(0,0,0,.65),
+    0 0 60px rgba(220,38,38,.15);
+
+    overflow:hidden;
+
+    animation:appear 1.2s ease;
+}
+
+.card::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    padding:1px;
+    border-radius:28px;
+    background:linear-gradient(135deg,#DC2626,#F87171,#F59E0B,#DC2626);
+    background-size:300% 300%;
+    animation:borderGlow 6s linear infinite;
+    -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+    -webkit-mask-composite:xor;
+            mask-composite:exclude;
+}
+
+h1{
+    font-size:clamp(2.7rem,6vw,5rem);
+    line-height:1.15;
+    letter-spacing:-2px;
+    font-weight:800;
+    color:#FAFAFA;
+    text-align:center;
+}
+
+/* Sanket */
+
+.name{
+    background:linear-gradient(90deg,#FDE68A,#F59E0B,#F97316);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+/* SDS */
+
+.sds{
+    background:linear-gradient(90deg,#FCA5A5,#EF4444,#DC2626);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+.subtitle{
+    margin-top:20px;
+    text-align:center;
+    color:#A1A1AA;
+    letter-spacing:6px;
+    text-transform:uppercase;
+    font-size:.9rem;
+}
+
+@keyframes appear{
+    from{
+        transform:translateY(40px) scale(.95);
+        opacity:0;
+    }
+    to{
+        transform:translateY(0) scale(1);
+        opacity:1;
+    }
+}
+
+@keyframes float{
+    from{
+        transform:translate(-120px,-80px);
+    }
+    to{
+        transform:translate(140px,90px);
+    }
+}
+
+@keyframes bgMove{
+    0%{background-position:left top;}
+    50%{background-position:right bottom;}
+    100%{background-position:left top;}
+}
+
+@keyframes borderGlow{
+    0%{background-position:0% 50%;}
+    100%{background-position:300% 50%;}
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="card">
+
+<h1>
+Hello,<br>
+This is <span class="name">Sanket</span><br>
+aka <span class="sds">SDS</span> Here
+</h1>
+
+<div class="subtitle">
+Developer • Creator • Learner
+</div>
+
+</div>
+
+</body>
+</html>

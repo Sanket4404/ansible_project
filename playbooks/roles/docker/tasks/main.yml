@@ -1,0 +1,27 @@
+---
+# tasks file for role/docker
+
+- name: Update system
+  apt:
+    name: "*"
+    state: latest
+
+- name: Install Docker
+  apt:
+    name: docker.io
+    state: latest
+
+- name: Add users to Docker Group
+  user:
+    name: "{{ item }}"
+    group: docker
+    append: true
+  loop: "{{ docker_users }}"
+
+- name: Register Docker Version
+  command: docker --version
+  register: docker_version
+
+- name: Show Docker Version
+  debug:
+    msg: "{{ docker_version.stdout }}"

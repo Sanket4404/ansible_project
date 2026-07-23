@@ -1,0 +1,26 @@
+---
+- name: Install Packages
+  hosts: servers
+  become: yes
+
+  vars:
+    packages_to_install:
+      - tree
+      - zip
+      - unzip
+      - jq
+      - wget
+      - apache2
+
+  tasks:
+    - name: Install packages
+      apt:
+        name: "{{ item }}"
+        state: present
+        update_cache: yes
+      loop: "{{ packages_to_install }}"
+
+    - name: Showing Msg
+      debug:
+        msg: "Installing {{ item }}"
+      loop: "{{ packages_to_install }}"
